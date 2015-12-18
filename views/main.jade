@@ -1,0 +1,61 @@
+doctype html
+html
+head
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+	link(rel='stylesheet', href='/stylesheets/kanbanstyle.css')
+	link(href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css')
+	script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+	script(src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js")
+	script(src="/javascripts/js.js")
+body
+	h1#projectname #{projectname}
+	h5#username 
+		|Logged in as: 
+		a(href='#') #{loggedin}
+	h5#logout
+		a(href='/') Log out
+	.container
+		.row
+			.col-lg-4.col-md-4.col-sm-4
+				.todo
+					h3 TODO
+					hr
+					ul#sortable1.connectedSortable.todolist
+						li &nbsp;
+						each task in todo
+							li.card 
+									span.remove.glyphicon.glyphicon-remove
+									br
+									=task
+					.buttons				
+						button.pull-right#save_btn.btn.btn-default Save Project
+						button.pull-right#add_btn.btn.btn-primary.btn-md Add
+						input.pull-right#txt_field(type='text', name='job')
+
+			.col-lg-4.col-md-4.col-sm-4
+				.inprogress
+					h3 IN-PROGRESS
+					hr
+					ul#sortable1.connectedSortable.inprogresslist
+						li &nbsp;
+						each task in inprogress
+							li.card
+									span.remove.glyphicon.glyphicon-remove
+									br
+									=task
+			.col-lg-4.col-md-4.col-sm-4
+				.done
+					h3 DONE
+					hr
+					ul#sortable1.connectedSortable.donelist
+						li &nbsp;
+						each task in done
+							li.card
+									span.remove.glyphicon.glyphicon-remove
+									br
+									=task
+
+	.navbar.navbar-default.navbar-fixed-bottom
+		.container
+			p.navbar-text.text-center Copyright 2015 Pauly V.
