@@ -1,7 +1,8 @@
 	// Sortable
 	$(function() {
 		$("#sortable1, sortable2, sortable3").sortable({
-			connectWith: ".connectedSortable"
+			connectWith: ".connectedSortable",
+			dropOnEmpty: true
 		}).disableSelection();
 	});
 
